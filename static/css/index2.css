@@ -1,0 +1,222 @@
+/* variables */
+:root {
+  /* --background: url("./logo.jpeg"); */
+  --text: #9c9c9c;
+  --input-bg-color: #fff;
+  --input-text-color: #a3a3a3;
+  --button-bg-color: #7f8ff4;
+  --button-text-color: #fff;
+  --box-shadow-color: rgba(0, 0, 0, 0.1);
+  --glow-color: #7f8ff4;
+  --underline-color: #7f8ff4;
+}
+
+/* root */
+body {
+  background: var(--background) center/cover;
+  background: linear-gradient(to right, #7f8ff4, #5b6ff5);
+
+  color: var(--text);
+  font: 1rem "PT Sans", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
+
+a {
+  color: inherit;
+}
+
+a:hover {
+  color: var(--button-bg-color);
+}
+
+/* background container */
+.background-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 20px;
+}
+
+/* logo */
+.logo {
+  font-size: 2rem;
+  margin: 0;
+  padding: 0;
+  color: var(--underline-color);
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  letter-spacing: 2px;
+  color: white;
+}
+
+/* .logo:hover {
+    color: #f6efef;
+  } */
+
+/* underline animation */
+.logo::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background-color: var(--underline-color);
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-in-out;
+}
+
+.logo:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* helper */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 20px var(--box-shadow-color);
+  padding: 33px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  height: 90%;
+  width: 95%;
+  animation: glow 2s infinite alternate, fadeIn 1s ease-out;
+  animation: fadeIn 1s ease-out, scaleIn 0.5s ease-out;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+/* button */
+.btn {
+  display: inline-block;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  border: 0;
+  outline: 0;
+  padding: 0;
+  transition: all 200ms ease-in;
+  cursor: pointer;
+}
+
+.btn--primary {
+  background: var(--button-bg-color);
+  color: var(--button-text-color);
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  padding: 12px 36px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn--primary:hover {
+  background: darken(var(--button-bg-color), 4%);
+  color: #fff;
+  background: #5b6ff5;
+  transform: scale(1.05);
+}
+
+.btn--primary:active {
+  background: var(--button-bg-color);
+  box-shadow: inset 0 0 10px 2px rgba(0, 0, 0, 0.2);
+}
+
+.btn--inside {
+  margin-left: -96px;
+}
+
+/* form */
+.form__field {
+  width: 860px;
+  background: var(--input-bg-color);
+  color: var(--underline-color);
+  font: inherit;
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.1);
+  border: 0;
+  outline: 0;
+  padding: 22px 18px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form__field:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(95, 99, 255, 0.4);
+}
+
+/* header */
+h1 {
+  margin-bottom: 20px;
+  font-size: 2rem;
+  text-align: center;
+  color: #5b6ff5;
+}
+
+h1:hover {
+  color: var(--underline-color);
+}
+
+.animated {
+  color: #282727;
+  text-align: center;
+}
+
+/* fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 20px var(--box-shadow-color), 0 0 10px var(--glow-color);
+  }
+  to {
+    box-shadow: 0 0 30px var(--box-shadow-color), 0 0 20px var(--glow-color);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.8);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.safe {
+  color: #4caf50; /* Green color for safe result */
+  align-items: center;
+}
+
+.safe:hover {
+  color: #26b12b;
+}
+
+/* Styles for negative (unsafe) prediction */
+.unsafe {
+  color: #ff0000; /* Red color for unsafe result */
+  align-items: center;
+}
+
+.unsafe:hover {
+  color: #c70303;
+}

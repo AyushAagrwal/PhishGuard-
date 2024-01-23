@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PhishGuard</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/index2.css') }}"
+    />
+    <link rel="icon" type="image/x-icon" href="../static/img/logo.ico" />
+  </head>
+
+  <body>
+    <div class="background-container">
+      <h2 class="logo">PhishGuard</h2>
+    </div>
+    <div class="container">
+      <h1>Phishing Website Checker</h1>
+      <div class="form">
+        <div class="container__item">
+          <form action="/predict_phishing" method="post" class="form">
+            <input
+              type="text"
+              class="form__field"
+              name="input_url"
+              placeholder="Your URL Address"
+              required
+            />
+            <button
+              type="submit"
+              class="btn btn--primary btn--inside uppercase"
+            >
+              Check
+            </button>
+          </form>
+          {% if prediction %}
+          <p
+            class="animated {% if prediction == 'Safe' %}safe{% else %}unsafe{% endif %}"
+          >
+            Prediction: {{ prediction }}
+          </p>
+          <!-- Display entered URL -->
+          <p class="animated">Entered URL: {{ request.form['input_url'] }}</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
